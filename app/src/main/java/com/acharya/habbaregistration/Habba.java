@@ -1,6 +1,8 @@
 package com.acharya.habbaregistration;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.design.widget.TextInputEditText;
@@ -14,6 +16,7 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -24,6 +27,7 @@ import android.widget.Toast;
 import com.acharya.habbaregistration.Apl.Apl;
 import com.acharya.habbaregistration.Apl.HttpHandler;
 import com.acharya.habbaregistration.Apl.RegisterUserClass;
+import com.acharya.habbaregistration.HomeScreen.HomeScreen;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -31,6 +35,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 import static android.widget.Toast.LENGTH_LONG;
 
@@ -41,21 +46,25 @@ public class Habba extends AppCompatActivity{
     private EditText editTextDescribe;
     private EditText editTextUsn;
     private EditText editTextSuggestion;
+    private EditText editTextSkills;
     private static String url = null;
     private static String url1 = null;
-
-    String email,name,clg,dept,year,exp;
+    private CheckBox c1,c2,c3,c4;
+    private static String interest = " ";
+    Map<String,String> map=new HashMap<String,String>();
+    String idzz2;
+    String email,name,clg,dept,year,exp,skills;
     Spinner s1, s2;
     RadioGroup rgyear,rgexp;
     RadioButton rbyear,rbexp;
     private Button buttonRegister;
-    private static final String REGISTER_URL = "http:www.acharyahabba.in/apl/register.php";
+    private static final String REGISTER_URL = "http://www.acharyahabba.in/habba18/vol_app.php";
     private String nullstring = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_habba);
-
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         Intent mIntent = getIntent();
         Bundle bundle = mIntent.getExtras();
         if (bundle != null) {
@@ -64,7 +73,7 @@ public class Habba extends AppCompatActivity{
             if(name.equals(nullstring)||name.equals(" "))
                 name="N/A";
         }
-        url = "http://acharyahabba.in/habba18/events.php";
+        url = "http://acharyahabba.in/apl/college.php";
         spinnerlist = new ArrayList<>();
         new Habba.GetContacts().execute();
 
@@ -84,6 +93,7 @@ public class Habba extends AppCompatActivity{
         editTextEmail = (EditText) findViewById(R.id.editTextEmail);
         editTextUsn = (TextInputEditText)findViewById(R.id.Usn);
         editTextSuggestion = (TextInputEditText)findViewById(R.id.Suggestion);
+        editTextSkills = (TextInputEditText)findViewById(R.id.Skills);
         s1 = findViewById(R.id.spinner1);
         s2 = findViewById(R.id.spinner2);
         rgyear = (RadioGroup)findViewById(R.id.rgyear);
@@ -93,6 +103,13 @@ public class Habba extends AppCompatActivity{
         editTextName.setEnabled(true);
         editTextEmail.setText(email,TextView.BufferType.EDITABLE);
         editTextEmail.setEnabled(false);
+
+        c1 = (CheckBox)findViewById(R.id.one);
+        c2 = (CheckBox)findViewById(R.id.two);
+        c3 = (CheckBox)findViewById(R.id.three);
+        c4 = (CheckBox)findViewById(R.id.four);
+
+
 
         rgyear.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -154,7 +171,8 @@ public class Habba extends AppCompatActivity{
                     for (int i = 0; i < contacts.length(); i++) {
                         JSONObject c = contacts.getJSONObject(i);
                         String name = c.getString("name");
-
+                        String idzz1=c.getString("id");
+                        map.put(name,idzz1);
                         spinnerlist.add(name);
                     }
 
@@ -203,8 +221,13 @@ public class Habba extends AppCompatActivity{
                     s1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                            String hahaah="";
+//                            long z2=id+1;
+//                            hahaah=hahaah+z2;
+//                            Toast.makeText(getApplicationContext(),hahaah,Toast.LENGTH_SHORT).show();
                             clg = s1.getSelectedItem().toString();
-                            url1 = "http://acharyahabba.in/habba18/subevents.php?main=" + clg;
+                            idzz2=map.get(clg);
+                            url1 = "http://acharyahabba.in/apl/dept.php?cid=" + idzz2;
                             System.out.println("spinner"+url1);
                             subspinnerlist = new ArrayList<>();
                             new Habba.GetCategory().execute();
@@ -260,11 +283,11 @@ public class Habba extends AppCompatActivity{
                 try {
                     JSONObject jsonObj = new JSONObject(jsonStr);
 
-                    JSONArray contacts = jsonObj.getJSONArray("result1");
+                    JSONArray contacts = jsonObj.getJSONArray("result");
                     for(int i = 0; i<contacts.length(); i++) {
                         JSONObject c = contacts.getJSONObject(i);
-                        String name = c.getString("name");
-                        amount = c.getString("amount");
+                        String name = c.getString("dept_name");
+                        //amount = c.getString("amount");
 
                         subspinnerlist.add(name);
                     }
@@ -343,14 +366,23 @@ public class Habba extends AppCompatActivity{
             }
         if( editTextSuggestion.getText().toString().trim().equals(""))
             editTextSuggestion.setError( "Suggestion is required!" );
+        if( editTextUsn.getText().toString().trim().equals(""))
+            editTextUsn.setError( "Usn is required!" );
+        interest="";
+        if(c1.isChecked()&&(!interest.contains(c1.getText().toString()))) interest = interest + c1.getText().toString() + " ";
+        if(c2.isChecked()&&(!interest.contains(c2.getText().toString()))) interest = interest + c2.getText().toString() + " ";
+        if(c3.isChecked()&&(!interest.contains(c3.getText().toString()))) interest = interest + c3.getText().toString() + " ";
+        if(c4.isChecked()&&(!interest.contains(c4.getText().toString()))) interest = interest + c4.getText().toString() + " ";
+        Log.e(TAG,interest);
         String usn = editTextUsn.getText().toString().trim().toLowerCase();
         String describe = editTextDescribe.getText().toString().trim().toLowerCase();
         String phone = editTextPhone.getText().toString().trim();
         String suggestion = editTextSuggestion.getText().toString().trim().toLowerCase();
-        register(name,email,usn,clg,dept,year,exp,describe,phone,suggestion);
+        skills=editTextSkills.getText().toString().trim().toLowerCase();
+        register(name,email,usn,clg,dept,year,exp,describe,phone,suggestion,interest,skills);
     }
 
-    private void register(String name, String email, String usn, String clg, String dept, String year, String exp, String describe, String phone, String suggestion) {
+    private void register(String name, String email, String usn, String clg, String dept, String year, String exp, String describe, String phone, String suggestion, String interest, String skills) {
         class RegisterUser extends AsyncTask<String, Void, String> {
             ProgressDialog loading;
             RegisterUserClass ruc = new RegisterUserClass();
@@ -380,10 +412,12 @@ public class Habba extends AppCompatActivity{
                 data.put("dept",params[4]);
                 data.put("year",params[5]);
                 data.put("exp",params[6]);
-                data.put("describe",params[7]);
-                data.put("phone",params[8]);
-                data.put("suggestion",params[9]);
-
+                data.put("aboutme",params[7]);
+                data.put("num",params[8]);
+                data.put("suggest",params[9]);
+                data.put("interest",params[10]);
+                data.put("skill",params[11]);
+                Log.e(TAG,data.get("interest"));
                 String result = ruc.sendPostRequest(REGISTER_URL,data);
 
                 return  result;
@@ -391,6 +425,14 @@ public class Habba extends AppCompatActivity{
         }
 
         RegisterUser ru = new RegisterUser();
-        ru.execute(name,email,usn,clg,dept,year,exp,describe,phone,suggestion);
+        ru.execute(name,email,usn,clg,dept,year,exp,describe,phone,suggestion,interest,skills);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+//        Intent intent = new Intent(this, HomeScreen.class);
+//        startActivity(intent);
+//        finish();
     }
 }

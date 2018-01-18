@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.provider.MediaStore;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
@@ -18,6 +19,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.ViewTreeObserver;
+import android.view.WindowManager;
 import android.view.animation.AccelerateInterpolator;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
@@ -63,19 +65,21 @@ public class Apl extends AppCompatActivity {
     TextView t1,t2;
     Spinner s1, s2;
     Button buttonRegister;
-
+    Map<String,String> map=new HashMap<String,String>();
+    String idzz2;
     RadioGroup radioGroupGender,radioGroupDesignation,radioGroupCategory;
     RadioButton radioButtonGender,radioButtonDesignation,radioButtonCategory;
-    String email,name,clg,number,gender,designation,usn,category,dept,dob;
+    public String email,name,clg,number,gender,designation,usn,category,dept,dob;
+
     private static String url = null;
     private static String url1 = null;
-
+    boolean flagz1=false;
     View rootLayout;
     private int revealX;
     private int revealY;
     int mWidth,mHeight;
 
-    private static final String REGISTER_URL = "http:www.acharyahabba.in/apl/register.php";
+    private static final String REGISTER_URL = "http://www.acharyahabba.in/apl/register.php";
     public static final String EXTRA_CIRCULAR_REVEAL_X = "EXTRA_CIRCULAR_REVEAL_X";
     public static final String EXTRA_CIRCULAR_REVEAL_Y = "EXTRA_CIRCULAR_REVEAL_Y";
 
@@ -84,9 +88,13 @@ public class Apl extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_apl);
-
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         getSupportActionBar().hide();
 
+        //default values for clg, dept and usn
+        clg="N/A";
+        dept="N/A";
+        usn="N/A";
         final Intent intent = getIntent();
         mWidth= this.getResources().getDisplayMetrics().widthPixels;
         mHeight= this.getResources().getDisplayMetrics().heightPixels;
@@ -139,7 +147,7 @@ public class Apl extends AppCompatActivity {
                 name="N/A";
         }
 
-        url = "http://acharyahabba.in/habba18/events.php";
+        url = "http://acharyahabba.in/apl/college.php";
         spinnerlist = new ArrayList<>();
         new GetContacts().execute();
         initeditfileds();
@@ -236,6 +244,7 @@ public class Apl extends AppCompatActivity {
                     t1.setVisibility(View.VISIBLE);
                     t2.setVisibility(View.VISIBLE);
                     editTextUsn.setVisibility(View.VISIBLE);
+                    flagz1=true;
                 }
               else {
                     editTextUsn.setVisibility(View.GONE);
@@ -243,6 +252,7 @@ public class Apl extends AppCompatActivity {
                     s2.setVisibility(View.GONE);
                     t1.setVisibility(View.GONE);
                     t2.setVisibility(View.GONE);
+                    flagz1=false;
 
                 }
                 if(designation.equals("Faculty")||designation.equals("Others")){
@@ -251,9 +261,13 @@ public class Apl extends AppCompatActivity {
                     s2.setVisibility(View.GONE);
                     t1.setVisibility(View.GONE);
                     t2.setVisibility(View.GONE);
+                    flagz1=false;
                 }
-                if(designation.isEmpty())
-                    designation="N/A";
+                if(designation.isEmpty()) {
+                    designation = "N/A";
+                    flagz1=false;
+                }
+
             }
 
 
@@ -312,7 +326,9 @@ public class Apl extends AppCompatActivity {
                     for (int i = 0; i < contacts.length(); i++) {
                         JSONObject c = contacts.getJSONObject(i);
                         String name = c.getString("name");
+                        String idzz1=c.getString("id");
 
+                        map.put(name,idzz1);
                         spinnerlist.add(name);
                     }
 
@@ -362,7 +378,8 @@ public class Apl extends AppCompatActivity {
                         @Override
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                             clg = s1.getSelectedItem().toString();
-                            url1 = "http://acharyahabba.in/habba18/subevents.php?main=" + clg;
+                            idzz2=map.get(clg);
+                            url1 = "http://acharyahabba.in/apl/dept.php?cid=" + idzz2;
                             System.out.println("spinner"+url1);
                             subspinnerlist = new ArrayList<>();
                             new GetCategory().execute();
@@ -418,11 +435,11 @@ public class Apl extends AppCompatActivity {
                 try {
                     JSONObject jsonObj = new JSONObject(jsonStr);
 
-                    JSONArray contacts = jsonObj.getJSONArray("result1");
+                    JSONArray contacts = jsonObj.getJSONArray("result");
                     for(int i = 0; i<contacts.length(); i++) {
                         JSONObject c = contacts.getJSONObject(i);
-                        String name = c.getString("name");
-                        amount = c.getString("amount");
+                        String name = c.getString("dept_name");
+                        //amount = c.getString("amount");
 
                         subspinnerlist.add(name);
                     }
@@ -514,9 +531,11 @@ public class Apl extends AppCompatActivity {
         }
             clg="N/A";
             dept="N/A";
-        clg = s1.getSelectedItem().toString();
-        dept = s2.getSelectedItem().toString();//null pointer exception
-
+            //usn="N/A";
+            if(flagz1==true) {
+                clg = s1.getSelectedItem().toString();
+                dept = s2.getSelectedItem().toString();//null pointer exception
+            }
         register(name,gender,dob,designation,category,email,number,clg,dept,usn);
         System.out.println("final" + name + gender + dob + designation + category + email + number + clg + dept + usn);
     }
@@ -553,7 +572,7 @@ public class Apl extends AppCompatActivity {
                 data.put("email",params[5]);
                 data.put("num",params[6]);
                 data.put("clg",params[7]);
-                data.put("dpt",params[8]);
+                data.put("dept",params[8]);
                 data.put("usn",params[9]);
 
                 String result = ruc.sendPostRequest(REGISTER_URL,data);

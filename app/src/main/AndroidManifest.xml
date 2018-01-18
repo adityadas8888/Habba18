@@ -27,10 +27,12 @@
 
         </activity>
         <activity
+
             android:name=".Apl.Apl"
             android:windowSoftInputMode="stateHidden|adjustResize">
         </activity>
-        <activity android:name=".Habba">
+        <activity android:name=".Habba"
+            android:windowSoftInputMode="stateHidden|adjustResize">
 
         </activity>
         <activity android:name=".Login.Login">
