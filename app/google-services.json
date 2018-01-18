@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "378959478937",
+    "project_id": "habbaregistration"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:378959478937:android:5e819c45ee2a3a0c",
+        "android_client_info": {
+          "package_name": "com.acharya.habbaregistration"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "378959478937-ajpr6r2560u1g647gjapp416dpf6g1p5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.acharya.habbaregistration",
+            "certificate_hash": "93f7d32fdef2bb445f89a3d5ef7191e03b153700"
+          }
+        },
+        {
+          "client_id": "378959478937-nas5p0ijj09tjr5fqinomr4qo9eblvus.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZMD76BmE86Hv5CaTWX8Co4TYJR7TlTMg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

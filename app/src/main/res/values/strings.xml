@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">HabbaRegistration</string>
+    <string name="enter_your_name">Enter your name</string>
+    <string name="enter_your_college">Enter your College</string>
+    <string name="college_name">College Name</string>
+    <string name="enter_mobile_number">Enter Mobile Number</string>
+    <string name="phone_number">Phone number</string>
+    <string name="enter_your_email">Enter your email</string>
+    <string name="gender">Gender</string>
+    <string name="enter_your_designation">Enter your Designation</string>
+    <string name="Name">Name</string>
+    <string name="Usn">Usn</string>
+    <string name="Phone">Phone</string>
+    <string name="Suggestion">Suggestion</string>
+    <string name="Describe">Describe yourself in a sentence</string>
+    <string name="College">Select College</string>
+    <string name="Exp">Past Experience(1 to 5)</string>
+    <string name="Branch">Select Branch</string>
+    <string name="Year">Select Year</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="enter_usn">Enter USN</string>
+    <string name="enter_your_date_of_birth">Enter your Date of Birth</string>
+</resources>
