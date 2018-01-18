@@ -289,6 +289,7 @@ public class Apl extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 registerUser();
+
             }
         });
     }
@@ -538,6 +539,10 @@ public class Apl extends AppCompatActivity {
             }
         register(name,gender,dob,designation,category,email,number,clg,dept,usn);
         System.out.println("final" + name + gender + dob + designation + category + email + number + clg + dept + usn);
+        Intent intent = new Intent(Apl.this, Apl.class);
+        intent.putExtra("email",email);
+        intent.putExtra("name",name);
+        startActivity(intent);
     }
 
 
@@ -583,5 +588,6 @@ public class Apl extends AppCompatActivity {
 
         RegisterUser ru = new RegisterUser();
         ru.execute(name,gender,dob,designation,category,email,number,clg,dept,usn);
+
     }
 }

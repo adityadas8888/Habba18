@@ -6,7 +6,7 @@
     <dimen name="_2dp">2dp</dimen>
     <dimen name="_4dp">4dp</dimen>
     <dimen name="_100dp">100dp</dimen>
-
+    <dimen name="_50dp">50dp</dimen>
     <dimen name="_18sp">18sp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="item_offset">10dp</dimen>
