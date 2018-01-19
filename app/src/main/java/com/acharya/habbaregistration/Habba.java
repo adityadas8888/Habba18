@@ -1,5 +1,4 @@
 package com.acharya.habbaregistration;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -91,7 +90,7 @@ public class Habba extends AppCompatActivity{
         rgexp = (RadioGroup)findViewById(R.id.rgexp);
         buttonRegister = (Button) findViewById(R.id.ButtonRegister);
         editTextName.setText(name, TextView.BufferType.EDITABLE);
-        editTextName.setEnabled(true);
+        editTextName.setEnabled(false);
         editTextEmail.setText(email,TextView.BufferType.EDITABLE);
         editTextEmail.setEnabled(false);
 

@@ -25,7 +25,7 @@ public class SplashScreen extends AppCompatActivity {
         actionBar.hide();
 
         final LottieAnimationView animationView = (LottieAnimationView) findViewById(R.id.animation_view);
-        animationView.setAnimation("loading.json");
+        animationView.setAnimation("logoblue1.json");
         animationView.loop(false);
         ValueAnimator animator = ValueAnimator.ofFloat(0f, 1f).setDuration(3000);
         animator.addUpdateListener(animation -> {animationView.setProgress((Float) animation.getAnimatedValue());});
