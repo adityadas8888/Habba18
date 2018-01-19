@@ -205,6 +205,12 @@ public class Apl extends AppCompatActivity {
         t2.setVisibility(View.GONE);
         textinputusn.setVisibility(View.GONE);
         editTextUsn.setVisibility(View.GONE);
+        radioButtonGender = (RadioButton) findViewById(radioGroupGender.getCheckedRadioButtonId());
+        gender = radioButtonGender.getText().toString();
+        radioButtonDesignation = (RadioButton) findViewById(radioGroupDesignation.getCheckedRadioButtonId());
+        designation = radioButtonDesignation.getText().toString();
+        radioButtonCategory = (RadioButton) findViewById(radioGroupCategory.getCheckedRadioButtonId());
+        category = radioButtonCategory.getText().toString();
 
         editTextDob.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -573,14 +579,15 @@ public class Apl extends AppCompatActivity {
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
                 loading.dismiss();
-                Toast.makeText(getApplicationContext(),s,Toast.LENGTH_LONG).show();
-                if(s.contentEquals("ok"))
+                if(s.contentEquals("ok")||s.contentEquals("ggwp"))
                 {
-                Intent intent = new Intent(Apl.this,UImageActivity.class);
-                intent.putExtra("email",email);
-                intent.putExtra("name",name);
-                startActivity(intent);
-                finish();}
+                    Intent intent = new Intent(Apl.this,UImageActivity.class);
+                    intent.putExtra("email",email);
+                    intent.putExtra("name",name);
+                    startActivity(intent);
+                    finish();}
+                if(s.contentEquals("ar"))
+                Toast.makeText(getApplicationContext(),"You are already registered!",Toast.LENGTH_LONG).show();
 
             }
 
@@ -613,6 +620,8 @@ public class Apl extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        Intent i = new Intent(this, HomeScreen.class);
+        startActivity(i);
         finish();
     }
 }

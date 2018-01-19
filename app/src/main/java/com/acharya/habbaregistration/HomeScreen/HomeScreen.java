@@ -5,6 +5,10 @@ import android.os.Handler;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.Toast;
+
 import com.acharya.habbaregistration.Apl.Apl;
 import com.acharya.habbaregistration.Habba;
 import com.acharya.habbaregistration.R;
@@ -15,6 +19,7 @@ import static android.graphics.Color.argb;
 
 public class HomeScreen extends AppCompatActivity {
     String email,name;
+    private static long back_pressed;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,6 +75,23 @@ public class HomeScreen extends AppCompatActivity {
 
             }
         });
+
+    }
+    @Override
+
+    public void onBackPressed()
+
+    {
+
+        if(back_pressed +2000 >System.currentTimeMillis()) {
+           super.onBackPressed();
+        }
+
+        else
+        {
+            Toast.makeText(getApplicationContext(),"Press back again to exit ",Toast.LENGTH_SHORT).show();
+            back_pressed = System.currentTimeMillis();
+        }
 
     }
 

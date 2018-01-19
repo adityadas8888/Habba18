@@ -21,6 +21,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.acharya.habbaregistration.Apl.HttpHandler;
 import com.acharya.habbaregistration.Apl.RegisterUserClass;
+import com.acharya.habbaregistration.HomeScreen.HomeScreen;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -39,12 +41,13 @@ public class Habba extends AppCompatActivity{
     private EditText editTextSkills;
     private static String url = null;
     private static String url1 = null;
-    private CheckBox c1,c2,c3,c4,c5,c6,c7,c8;
+    private CheckBox c1,c2,c3,c4,c5,c6,c7;
     private static String interest = " ";
     Map<String,String> map=new HashMap<String,String>();
     String idzz2;
     String email,name,clg,dept,year,exp,skills;
     Spinner s1, s2;
+                                                                                                     // Spinner yearspin;
     RadioGroup rgyear,rgexp;
     RadioButton rbyear,rbexp;
     private Button buttonRegister;
@@ -93,7 +96,10 @@ public class Habba extends AppCompatActivity{
         editTextName.setEnabled(false);
         editTextEmail.setText(email,TextView.BufferType.EDITABLE);
         editTextEmail.setEnabled(false);
-
+        rbyear = (RadioButton) findViewById(rgyear.getCheckedRadioButtonId());
+        year = rbyear.getText().toString();
+        rbexp = (RadioButton) findViewById(rgexp.getCheckedRadioButtonId());
+        exp = rbexp.getText().toString();                       //  yearspin = findViewById(R.id.yearspinner);
         c1 = (CheckBox)findViewById(R.id.one);
         c2 = (CheckBox)findViewById(R.id.two);
         c3 = (CheckBox)findViewById(R.id.three);
@@ -101,11 +107,7 @@ public class Habba extends AppCompatActivity{
         c5 = (CheckBox)findViewById(R.id.five);
         c6 = (CheckBox)findViewById(R.id.six);
         c7 = (CheckBox)findViewById(R.id.seven);
-        c8 = (CheckBox)findViewById(R.id.eight);
-
-
-
-        rgyear.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+         rgyear.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 int selectedId = rgyear.getCheckedRadioButtonId();
@@ -116,6 +118,7 @@ public class Habba extends AppCompatActivity{
             }
 
         });
+
 
         rgexp.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -372,13 +375,13 @@ public class Habba extends AppCompatActivity{
         if(c5.isChecked()&&(!interest.contains(c5.getText().toString()))) interest = interest + c5.getText().toString() + ",";
         if(c6.isChecked()&&(!interest.contains(c6.getText().toString()))) interest = interest + c6.getText().toString() + ",";
         if(c7.isChecked()&&(!interest.contains(c7.getText().toString()))) interest = interest + c7.getText().toString() + ",";
-        if(c8.isChecked()&&(!interest.contains(c8.getText().toString()))) interest = interest + c8.getText().toString() + ",";
 
         Log.e(TAG,interest);
         String usn = editTextUsn.getText().toString().trim().toLowerCase();
         String describe = editTextDescribe.getText().toString().trim().toLowerCase();
         String phone = editTextPhone.getText().toString().trim();
         String suggestion = editTextSuggestion.getText().toString().trim().toLowerCase();
+        Log.e(TAG,year+exp);
         skills=editTextSkills.getText().toString().trim().toLowerCase();
         if(usn.isEmpty()||describe.isEmpty()||phone.isEmpty()||year.isEmpty()||exp.isEmpty()||skills.isEmpty()||suggestion.isEmpty())
         { Toast.makeText(getApplicationContext(),"Enter Required Values",Toast.LENGTH_SHORT).show();}
@@ -435,6 +438,8 @@ public class Habba extends AppCompatActivity{
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        Intent i = new Intent(this, HomeScreen.class);
+        startActivity(i);
         finish();
 
 

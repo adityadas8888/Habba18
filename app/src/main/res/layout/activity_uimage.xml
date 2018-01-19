@@ -19,24 +19,9 @@ tools:context="com.acharya.habbaregistration.UploadImage.UImageActivity">
         android:layout_above="@+id/buttonUpload"
         android:layout_centerHorizontal="true"
         android:contextClickable="false"
-
+        android:textColor="#FFFFFF"
         android:gravity="center"
         android:paddingBottom="20dp"
-        />
-
-    <Button
-        android:id="@+id/buttonSelect"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:paddingBottom="20dp"
-        android:paddingTop="@dimen/_50dp"
-        android:textColor="#FFFFFF"
-        android:background="@drawable/buttonshape2"
-        android:text="CLICK HERE TO SELECT IMAGE FROM GALLERY"
-        android:textAlignment="center"
         />
 
     <ImageView
@@ -44,11 +29,22 @@ tools:context="com.acharya.habbaregistration.UploadImage.UImageActivity">
         android:id="@+id/imageView"
         android:layout_width="fill_parent"
         android:layout_height="270dp"
-        android:layout_above="@+id/editTextImageName"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/buttonSelect"
         android:paddingBottom="20dp"/>
+    <LinearLayout
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+
+
+    <Button
+        android:id="@+id/buttonSelect"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/buttonshape2"
+        android:text="Select Image"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF" />
 
     <Button
         android:id="@+id/buttonUpload"
@@ -61,6 +57,7 @@ tools:context="com.acharya.habbaregistration.UploadImage.UImageActivity">
         android:background="@drawable/buttonshape2"
         android:paddingBottom="20dp"
         android:paddingTop="20dp"
-        android:text="CLICK HERE TO UPLOAD" />
+        android:text="Upload Image" />
+    </LinearLayout>
 
 </LinearLayout>

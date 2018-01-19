@@ -145,9 +145,9 @@ public class UImageActivity extends AppCompatActivity {
 
                 super.onPostExecute(string1);                                                                    // Dismiss the progress dialog after done uploading.
                 progressDialog.dismiss();                                                                     // Printing uploading success message coming from server on android app.
-                Toast.makeText(UImageActivity.this,string1,Toast.LENGTH_LONG).show();                // Setting image as transparent after done uploading.
+             //   Toast.makeText(UImageActivity.this,string1,Toast.LENGTH_LONG).show();                // Setting image as transparent after done uploading.
                 imageView.setImageResource(android.R.color.transparent);
-                if(string1.contentEquals("Your Image Has Been Uploaded."))
+                if(string1.contentEquals("Registration successfull"))
                 {
 
                     Intent intent = new Intent(UImageActivity.this,HomeScreen.class);
@@ -234,4 +234,8 @@ public class UImageActivity extends AppCompatActivity {
         }
 
     }
+
+    @Override
+    public void onBackPressed() {
+            }
 }

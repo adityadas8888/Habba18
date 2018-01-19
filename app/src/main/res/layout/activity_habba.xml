@@ -43,6 +43,7 @@
                         android:layout_height="wrap_content"
                         android:text="VOLUNTEER REGISTRATION"
                         android:textSize="20dp"
+                        android:textColor="#8BA5FC"
                         android:textAlignment="center"/>
 
                     <TextView
@@ -123,27 +124,20 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/Year"/>
-
-                    <RadioGroup
+                   <RadioGroup
                         android:id="@+id/rgyear"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:weightSum="1.0">
 
-                        <!--<LinearLayout-->
-                            <!--android:orientation="horizontal"-->
-                            <!--android:layout_width="match_parent"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--android:weightSum="1.0">-->
-
-                            <RadioButton
-                                android:id="@+id/rb1"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="0.2"
-                                android:checked="false"
-                                android:text="1" />
+                       <RadioButton
+                           android:id="@+id/rb1"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:layout_weight="0.2"
+                           android:checked="true"
+                           android:text="1" />
                             <RadioButton
                                 android:id="@+id/rb2"
                                 android:text="2"
@@ -169,9 +163,14 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="0.2"/>
 
-                        <!--</LinearLayout>-->
+
 
                     </RadioGroup>
+
+                  <!--  <Spinner
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/yearspinner"/> -->
 
                     <TextView
                         android:id="@+id/textView3"
@@ -191,12 +190,13 @@
                             <!--android:layout_height="wrap_content"-->
                             <!--android:weightSum="1.0">-->
 
-                            <RadioButton
-                                android:id="@+id/rbe1"
-                                android:text="0"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="0.2"/>
+                        <RadioButton
+                            android:id="@+id/rbe1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.2"
+                            android:checked="true"
+                            android:text="0" />
                             <RadioButton
                                 android:id="@+id/rbe2"
                                 android:text="1"
@@ -280,11 +280,7 @@
                             android:text="Defence"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"/>
-                        <CheckBox
-                            android:id="@+id/eight"
-                            android:text="Digital Marketing"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"/>
+
                     </android.support.design.widget.TextInputLayout>
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
@@ -313,7 +309,7 @@
                             android:id="@+id/Skills"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Current Skills"/>
+                            android:hint="Current Skills(Optional)"/>
                     </android.support.design.widget.TextInputLayout>
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"

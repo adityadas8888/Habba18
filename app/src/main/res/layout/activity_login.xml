@@ -1,33 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.acharya.habbaregistration.Login.Login"
     android:background="@mipmap/login">
+
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/btn_sign_in"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="82dp"
+        android:paddingTop="400dp"
+        tools:layout_editor_absoluteX="6dp"
+        tools:layout_editor_absoluteY="259dp" />
 
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/btn_sign_in"
-        android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/btn_sign_in"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="490dp"/>
+        tools:layout_editor_absoluteY="490dp" />
 
-    <com.google.android.gms.common.SignInButton
-        android:id="@+id/btn_sign_in"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/progressBar"
-        android:layout_centerInParent="true"
-        android:layout_marginBottom="82dp"
-        android:paddingTop="400dp"
-        tools:layout_editor_absoluteX="6dp"
-        tools:layout_editor_absoluteY="259dp" />
-
-</RelativeLayout>
+</LinearLayout>
