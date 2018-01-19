@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.acharya.habbaregistration.Login.Login">
+    tools:context="com.acharya.habbaregistration.Login.Login"
+    android:background="@mipmap/login">
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -22,10 +23,11 @@
         android:id="@+id/btn_sign_in"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
+        android:layout_above="@+id/progressBar"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="82dp"
+        android:paddingTop="400dp"
         tools:layout_editor_absoluteX="6dp"
-        tools:layout_editor_absoluteY="259dp"/>
+        tools:layout_editor_absoluteY="259dp" />
 
 </RelativeLayout>

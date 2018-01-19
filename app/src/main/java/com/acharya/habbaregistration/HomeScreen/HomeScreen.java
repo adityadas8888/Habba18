@@ -1,24 +1,13 @@
 package com.acharya.habbaregistration.HomeScreen;
-
 import android.content.Intent;
-import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.RequiresApi;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-
 import com.acharya.habbaregistration.Apl.Apl;
 import com.acharya.habbaregistration.Habba;
-import com.acharya.habbaregistration.Login.Login;
 import com.acharya.habbaregistration.R;
-
-import java.net.URL;
-
 import it.beppi.tristatetogglebutton_library.TriStateToggleButton;
 
 import static android.graphics.Color.argb;

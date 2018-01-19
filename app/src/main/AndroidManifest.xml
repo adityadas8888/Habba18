@@ -15,24 +15,33 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".SplashScreen.SplashScreen"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme"
+            android:launchMode = "singleInstance">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".HomeScreen.HomeScreen"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme"
+            android:launchMode = "singleInstance"></activity>
+
         <activity
             android:name=".Apl.Apl"
-            android:windowSoftInputMode="stateHidden|adjustResize"></activity>
+            android:windowSoftInputMode="stateHidden|adjustResize"
+            android:launchMode = "singleInstance"></activity>
+
         <activity
             android:name=".Habba"
-            android:windowSoftInputMode="stateHidden|adjustResize"></activity>
+            android:windowSoftInputMode="stateHidden|adjustResize"
+            android:launchMode = "singleInstance"></activity>
+
         <activity android:name=".Login.Login"></activity>
-        <activity android:name=".UploadImage.UImageActivity"></activity>
+
+        <activity android:name=".UploadImage.UImageActivity"
+            android:launchMode = "singleInstance"></activity>
 
     </application>
 

@@ -99,7 +99,9 @@
                     android:id="@+id/editTextDob"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/enter_your_date_of_birth"/>
+                    android:hint="@string/enter_your_date_of_birth"
+                    android:inputType="date"
+                    />
             </android.support.design.widget.TextInputLayout>
 
 

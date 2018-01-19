@@ -75,7 +75,7 @@ public class Apl extends AppCompatActivity {
     TextInputLayout textinputusn;
     private static String url = null;
     private static String url1 = null;
-    boolean flagz1=false;
+    boolean flagz1=false,flagz2=true;
     View rootLayout;
     private int revealX;
     private int revealY;
@@ -489,7 +489,8 @@ public class Apl extends AppCompatActivity {
                 public void run() {
 
                     ArrayAdapter<String> subspinnerAdapter = new ArrayAdapter<String>(getApplicationContext(),
-                            android.R.layout.simple_spinner_dropdown_item , subspinnerlist);
+                            R.layout.spinner_item , subspinnerlist);
+                    subspinnerAdapter.setDropDownViewResource(R.layout.spinner_item);
                     s2.setAdapter(subspinnerAdapter);
                     s2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
@@ -512,12 +513,12 @@ public class Apl extends AppCompatActivity {
 
 
     private void registerUser() {
-
         usn = editTextUsn.getText().toString().trim().toLowerCase();
         if( editTextUsn.getText().toString().trim().equals("")) {
             editTextUsn.setError( "USN is required!" );
+
             if(usn.isEmpty())
-                usn="N/A";
+                usn="";
         }
 
         dob = editTextDob.getText().toString();
@@ -525,24 +526,34 @@ public class Apl extends AppCompatActivity {
         number = editTextPhone.getText().toString().trim().toLowerCase();
         if( editTextPhone.getText().toString().trim().equals("")) {
             editTextPhone.setError( "Phone number is required!" );
+
             if(number.isEmpty())
-                number="N/A";
+                number="";
+
         }
         if( editTextDob.getText().toString().trim().equals("")) {
-            editTextDob.setError( "Phone number is required!" );
+            editTextDob.setError( "DOB is required!" );
             if(dob.isEmpty())
-                dob="08/08/1994";
-        }
-            clg="N/A";
-            dept="N/A";
-            //usn="N/A";
-            if(flagz1==true) {
-                clg = s1.getSelectedItem().toString();
-                dept = s2.getSelectedItem().toString();//null pointer exception
-            }
-        register(name,gender,dob,designation,category,email,number,clg,dept,usn);
-        System.out.println("final" + name + gender + dob + designation + category + email + number + clg + dept + usn);
+                dob="";
 
+        }
+
+        clg="N/A";
+        dept="N/A";
+        if(flagz1==true) {
+            clg = s1.getSelectedItem().toString();
+            dept = s2.getSelectedItem().toString();//null pointer exception
+        }
+        else{
+
+        }
+        if(dob.isEmpty()||number.isEmpty()||(designation.equals("Student")&&usn.isEmpty())) {
+            Toast.makeText(getApplicationContext(),"Enter Required Values",Toast.LENGTH_SHORT).show();
+        }
+        else{
+            register(name, gender, dob, designation, category, email, number, clg, dept, usn);
+            System.out.println("final" + name + gender + dob + designation + category + email + number + clg + dept + usn);
+        }
     }
 
 
@@ -597,5 +608,11 @@ public class Apl extends AppCompatActivity {
         RegisterUser ru = new RegisterUser();
         ru.execute(name,gender,dob,designation,category,email,number,clg,dept,usn);
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 }

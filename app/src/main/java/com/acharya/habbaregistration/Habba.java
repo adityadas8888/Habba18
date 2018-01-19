@@ -1,8 +1,6 @@
 package com.acharya.habbaregistration;
 
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.design.widget.TextInputEditText;
@@ -11,7 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -23,20 +20,14 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.acharya.habbaregistration.Apl.Apl;
 import com.acharya.habbaregistration.Apl.HttpHandler;
 import com.acharya.habbaregistration.Apl.RegisterUserClass;
-import com.acharya.habbaregistration.HomeScreen.HomeScreen;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-
 import static android.widget.Toast.LENGTH_LONG;
 
 public class Habba extends AppCompatActivity{
@@ -49,7 +40,7 @@ public class Habba extends AppCompatActivity{
     private EditText editTextSkills;
     private static String url = null;
     private static String url1 = null;
-    private CheckBox c1,c2,c3,c4;
+    private CheckBox c1,c2,c3,c4,c5,c6,c7,c8;
     private static String interest = " ";
     Map<String,String> map=new HashMap<String,String>();
     String idzz2;
@@ -78,8 +69,8 @@ public class Habba extends AppCompatActivity{
         new Habba.GetContacts().execute();
 
         initfilelds();
+        // Hide the status bar.
         View decorView = getWindow().getDecorView();
-// Hide the status bar.
         int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
         decorView.setSystemUiVisibility(uiOptions);
         ActionBar actionBar = getSupportActionBar();
@@ -108,6 +99,10 @@ public class Habba extends AppCompatActivity{
         c2 = (CheckBox)findViewById(R.id.two);
         c3 = (CheckBox)findViewById(R.id.three);
         c4 = (CheckBox)findViewById(R.id.four);
+        c5 = (CheckBox)findViewById(R.id.five);
+        c6 = (CheckBox)findViewById(R.id.six);
+        c7 = (CheckBox)findViewById(R.id.seven);
+        c8 = (CheckBox)findViewById(R.id.eight);
 
 
 
@@ -227,6 +222,7 @@ public class Habba extends AppCompatActivity{
 //                            Toast.makeText(getApplicationContext(),hahaah,Toast.LENGTH_SHORT).show();
                             clg = s1.getSelectedItem().toString();
                             idzz2=map.get(clg);
+
                             url1 = "http://acharyahabba.in/apl/dept.php?cid=" + idzz2;
                             System.out.println("spinner"+url1);
                             subspinnerlist = new ArrayList<>();
@@ -243,6 +239,7 @@ public class Habba extends AppCompatActivity{
                         @Override
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                             s2.setSelection(position);
+                            //((TextView) parent.getChildAt(0)).setTextColor(0x00000000);
                         }
 
                         @Override
@@ -332,7 +329,8 @@ public class Habba extends AppCompatActivity{
                 public void run() {
 
                     ArrayAdapter<String> subspinnerAdapter = new ArrayAdapter<String>(getApplicationContext(),
-                            android.R.layout.simple_spinner_dropdown_item , subspinnerlist);
+                            R.layout.spinner_item, subspinnerlist);
+                    subspinnerAdapter.setDropDownViewResource(R.layout.spinner_item);
                     s2.setAdapter(subspinnerAdapter);
                     s2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
@@ -349,7 +347,6 @@ public class Habba extends AppCompatActivity{
                 }
             });
         }
-
 
     }
 
@@ -369,16 +366,24 @@ public class Habba extends AppCompatActivity{
         if( editTextUsn.getText().toString().trim().equals(""))
             editTextUsn.setError( "Usn is required!" );
         interest="";
-        if(c1.isChecked()&&(!interest.contains(c1.getText().toString()))) interest = interest + c1.getText().toString() + " ";
-        if(c2.isChecked()&&(!interest.contains(c2.getText().toString()))) interest = interest + c2.getText().toString() + " ";
-        if(c3.isChecked()&&(!interest.contains(c3.getText().toString()))) interest = interest + c3.getText().toString() + " ";
-        if(c4.isChecked()&&(!interest.contains(c4.getText().toString()))) interest = interest + c4.getText().toString() + " ";
+        if(c1.isChecked()&&(!interest.contains(c1.getText().toString()))) interest = interest + c1.getText().toString() + ",";
+        if(c2.isChecked()&&(!interest.contains(c2.getText().toString()))) interest = interest + c2.getText().toString() + ",";
+        if(c3.isChecked()&&(!interest.contains(c3.getText().toString()))) interest = interest + c3.getText().toString() + ",";
+        if(c4.isChecked()&&(!interest.contains(c4.getText().toString()))) interest = interest + c4.getText().toString() + ",";
+        if(c5.isChecked()&&(!interest.contains(c5.getText().toString()))) interest = interest + c5.getText().toString() + ",";
+        if(c6.isChecked()&&(!interest.contains(c6.getText().toString()))) interest = interest + c6.getText().toString() + ",";
+        if(c7.isChecked()&&(!interest.contains(c7.getText().toString()))) interest = interest + c7.getText().toString() + ",";
+        if(c8.isChecked()&&(!interest.contains(c8.getText().toString()))) interest = interest + c8.getText().toString() + ",";
+
         Log.e(TAG,interest);
         String usn = editTextUsn.getText().toString().trim().toLowerCase();
         String describe = editTextDescribe.getText().toString().trim().toLowerCase();
         String phone = editTextPhone.getText().toString().trim();
         String suggestion = editTextSuggestion.getText().toString().trim().toLowerCase();
         skills=editTextSkills.getText().toString().trim().toLowerCase();
+        if(usn.isEmpty()||describe.isEmpty()||phone.isEmpty()||year.isEmpty()||exp.isEmpty()||skills.isEmpty()||suggestion.isEmpty())
+        { Toast.makeText(getApplicationContext(),"Enter Required Values",Toast.LENGTH_SHORT).show();}
+        else
         register(name,email,usn,clg,dept,year,exp,describe,phone,suggestion,interest,skills);
     }
 
@@ -432,8 +437,7 @@ public class Habba extends AppCompatActivity{
     public void onBackPressed() {
         super.onBackPressed();
         finish();
-//        Intent intent = new Intent(this, HomeScreen.class);
-//        startActivity(intent);
-//        finish();
+
+
     }
 }

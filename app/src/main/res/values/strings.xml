@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">HabbaRegistration</string>
+    <string name="app_name">Acharya Habba 18</string>
     <string name="enter_your_name">Enter your name</string>
     <string name="enter_your_college">Enter your College</string>
     <string name="college_name">College Name</string>
@@ -21,5 +21,5 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="enter_usn">Enter USN</string>
-    <string name="enter_your_date_of_birth">Enter your Date of Birth</string>
+    <string name="enter_your_date_of_birth">Enter your Date of Birth(DD-MM-YYYY)</string>
 </resources>

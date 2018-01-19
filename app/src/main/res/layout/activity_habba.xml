@@ -108,7 +108,8 @@
                     <Spinner
                         android:id="@+id/spinner2"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        />
 
                     <TextView
                         android:id="@+id/textView9"
@@ -239,22 +240,42 @@
                             android:text="Fields of Interest" />
                         <CheckBox
                             android:id="@+id/one"
-                            android:text="one"
+                            android:text="Content Writing"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"/>
                         <CheckBox
                             android:id="@+id/two"
-                            android:text="two"
+                            android:text="Design and Art Work"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"/>
                         <CheckBox
                             android:id="@+id/three"
-                            android:text="three"
+                            android:text="Photography"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"/>
                         <CheckBox
                             android:id="@+id/four"
-                            android:text="four"
+                            android:text="Sports"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                        <CheckBox
+                            android:id="@+id/five"
+                            android:text="Marketing"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                        <CheckBox
+                            android:id="@+id/six"
+                            android:text="Media Handling"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                        <CheckBox
+                            android:id="@+id/seven"
+                            android:text="Defence"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                        <CheckBox
+                            android:id="@+id/eight"
+                            android:text="Digital Marketing"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"/>
                     </android.support.design.widget.TextInputLayout>
