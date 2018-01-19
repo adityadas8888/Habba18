@@ -23,6 +23,14 @@
             android:paddingBottom="@dimen/activity_vertical_margin">
 
             <TextView
+                android:id="@+id/textView"
+                android:layout_width="383dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="APL REGISTRATION"
+                android:textSize="20dp"/>
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/enter_your_name" />
@@ -32,6 +40,7 @@
                   app:errorEnabled="true">
                    <EditText
                       android:id="@+id/editTextName"
+                       android:clickable="false"
                       android:layout_width="fill_parent"
                       android:layout_height="wrap_content"
                       android:inputType="none"
@@ -52,6 +61,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="textEmailAddress"
                     android:id="@+id/editTextEmail"
+                    android:clickable="false"
                     android:textColor= "@drawable/edittextdrawable"/>
             </android.support.design.widget.TextInputLayout>
 
@@ -126,7 +136,8 @@
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:errorEnabled="true">
+                app:errorEnabled="true"
+                android:id="@+id/text_input_usn">
                 <EditText
                     android:id="@+id/editTextUsn"
                     android:layout_width="fill_parent"
@@ -144,9 +155,11 @@
                 android:id="@+id/textView2" />
 
             <Spinner
+                android:paddingTop="20dp"
                 android:id="@+id/spinner"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"/>
             <!--android:entries="@array/spinnerRoot" />-->
 
             <TextView
@@ -156,9 +169,11 @@
                 android:id="@+id/textView3" />
 
             <Spinner
+                android:paddingTop="20dp"
                 android:id="@+id/spinner2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:paddingBottom="20dp"/>
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -181,7 +196,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:weightSum="1.2"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingBottom="20dp">
                 <RadioButton
                     android:id="@+id/Batsmen"
                     android:text="Batsmen"
@@ -206,7 +222,9 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="Register"
-                android:id="@+id/buttonRegister" />
+                android:background="@drawable/buttonshape"
+                android:id="@+id/buttonRegister"
+                android:textColor="#FFFFFF"/>
 
         </LinearLayout>
 

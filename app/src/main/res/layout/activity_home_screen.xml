@@ -34,7 +34,8 @@
             android:layout_centerVertical="true"
             android:layout_marginEnd="30dp"
             android:layout_marginRight="30dp"
-            android:src="@mipmap/ic_launcher" />
+            android:src="@mipmap/habba"
+            android:id="@+id/imageView3" />
 
         <ImageView
             android:id="@+id/imageView"
@@ -45,12 +46,13 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="20dp"
             android:layout_marginStart="20dp"
-            android:src="@mipmap/ic_launcher" />
+            android:src="@mipmap/apl" />
 <TextView
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
     android:id="@+id/tstb1_text"
     android:gravity="center_vertical"/>
+
     </RelativeLayout>
 
 </LinearLayout>

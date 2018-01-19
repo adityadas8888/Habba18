@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.provider.MediaStore;
 import android.support.annotation.RequiresApi;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
 import android.util.Log;
@@ -35,6 +36,7 @@ import android.widget.Toast;
 
 import com.acharya.habbaregistration.HomeScreen.HomeScreen;
 import com.acharya.habbaregistration.R;
+import com.acharya.habbaregistration.UploadImage.UImageActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -70,7 +72,7 @@ public class Apl extends AppCompatActivity {
     RadioGroup radioGroupGender,radioGroupDesignation,radioGroupCategory;
     RadioButton radioButtonGender,radioButtonDesignation,radioButtonCategory;
     public String email,name,clg,number,gender,designation,usn,category,dept,dob;
-
+    TextInputLayout textinputusn;
     private static String url = null;
     private static String url1 = null;
     boolean flagz1=false;
@@ -130,6 +132,7 @@ public class Apl extends AppCompatActivity {
         editTextName = (EditText) findViewById(R.id.editTextName);
         editTextPhone = (EditText) findViewById(R.id.editPhone);
         editTextUsn = (EditText) findViewById(R.id.editTextUsn);
+        textinputusn = (TextInputLayout) findViewById(R.id.text_input_usn);
         s1 = (Spinner) findViewById(R.id.spinner);                          //College
         s2 = (Spinner) findViewById(R.id.spinner2);                         //Branch
         editTextEmail = (EditText) findViewById(R.id.editTextEmail);
@@ -146,7 +149,8 @@ public class Apl extends AppCompatActivity {
             if(name.equals(""))
                 name="N/A";
         }
-
+        editTextEmail.setText(email);
+        editTextEmail.setEnabled(false);
         url = "http://acharyahabba.in/apl/college.php";
         spinnerlist = new ArrayList<>();
         new GetContacts().execute();
@@ -193,16 +197,13 @@ public class Apl extends AppCompatActivity {
     }
 
     public void initeditfileds() {
-        editTextName.setText(name,TextView.BufferType.EDITABLE);
-        editTextName.setEnabled(true);
-        editTextEmail.setText(email,TextView.BufferType.EDITABLE);
-        editTextEmail.setEnabled(false);
-        editTextDob.setFocusable(false);
-        editTextDob.setClickable(true);
+        editTextName.setText(name);
+        editTextName.setEnabled(false);
         s1.setVisibility(View.GONE);
         s2.setVisibility(View.GONE);
         t1.setVisibility(View.GONE);
         t2.setVisibility(View.GONE);
+        textinputusn.setVisibility(View.GONE);
         editTextUsn.setVisibility(View.GONE);
 
         editTextDob.setOnClickListener(new View.OnClickListener() {
@@ -244,10 +245,12 @@ public class Apl extends AppCompatActivity {
                     t1.setVisibility(View.VISIBLE);
                     t2.setVisibility(View.VISIBLE);
                     editTextUsn.setVisibility(View.VISIBLE);
+                    textinputusn.setVisibility(View.VISIBLE);
                     flagz1=true;
                 }
               else {
                     editTextUsn.setVisibility(View.GONE);
+                    textinputusn.setVisibility(View.GONE);
                     s1.setVisibility(View.GONE);
                     s2.setVisibility(View.GONE);
                     t1.setVisibility(View.GONE);
@@ -257,6 +260,7 @@ public class Apl extends AppCompatActivity {
                 }
                 if(designation.equals("Faculty")||designation.equals("Others")){
                     editTextUsn.setVisibility(View.GONE);
+                    textinputusn.setVisibility(View.GONE);
                     s1.setVisibility(View.GONE);
                     s2.setVisibility(View.GONE);
                     t1.setVisibility(View.GONE);
@@ -521,7 +525,6 @@ public class Apl extends AppCompatActivity {
         number = editTextPhone.getText().toString().trim().toLowerCase();
         if( editTextPhone.getText().toString().trim().equals("")) {
             editTextPhone.setError( "Phone number is required!" );
-            editTextPhone.setHint("Please enter your phone number");
             if(number.isEmpty())
                 number="N/A";
         }
@@ -539,10 +542,7 @@ public class Apl extends AppCompatActivity {
             }
         register(name,gender,dob,designation,category,email,number,clg,dept,usn);
         System.out.println("final" + name + gender + dob + designation + category + email + number + clg + dept + usn);
-        Intent intent = new Intent(Apl.this, Apl.class);
-        intent.putExtra("email",email);
-        intent.putExtra("name",name);
-        startActivity(intent);
+
     }
 
 
@@ -563,6 +563,14 @@ public class Apl extends AppCompatActivity {
                 super.onPostExecute(s);
                 loading.dismiss();
                 Toast.makeText(getApplicationContext(),s,Toast.LENGTH_LONG).show();
+                if(s.contentEquals("Registration Succefull!"))
+                {
+                Intent intent = new Intent(Apl.this,UImageActivity.class);
+                intent.putExtra("email",email);
+                intent.putExtra("name",name);
+                startActivity(intent);
+                finish();}
+
             }
 
             @Override

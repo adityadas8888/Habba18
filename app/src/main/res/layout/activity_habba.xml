@@ -22,7 +22,8 @@
             android:layout_below="@+id/login_title"
             android:elevation="4dp"
             android:layout_marginTop="0dp"
-            android:paddingBottom="16dp"
+            android:paddingTop="50dp"
+            android:paddingBottom="50dp"
             android:orientation="vertical"
             >
 
@@ -36,7 +37,15 @@
                     android:layout_marginTop="0dp"
                     android:orientation="vertical">
 
-                        <EditText
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="VOLUNTEER REGISTRATION"
+                        android:textSize="20dp"
+                        android:textAlignment="center"/>
+
+                    <EditText
                             android:id="@+id/Name"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
@@ -299,9 +308,11 @@
                     <Button
                         android:id="@+id/ButtonRegister"
                         android:text="Register"
-                        android:textColor="#000000"
+                        android:textColor="#ffffff"
                         android:layout_width="match_parent"
-                        android:background="#40FFE6"
+                        android:textSize="@dimen/_18sp"
+                        android:background="@drawable/buttonshape"
+                        android:shadowRadius="5"
                         android:layout_height="match_parent"/>
                 </LinearLayout>
 
