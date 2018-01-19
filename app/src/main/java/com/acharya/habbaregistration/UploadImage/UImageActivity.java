@@ -3,13 +3,16 @@ package com.acharya.habbaregistration.UploadImage;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Matrix;
 import android.net.Uri;
+import android.nfc.Tag;
 import android.os.AsyncTask;
 import android.provider.MediaStore;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -113,6 +116,26 @@ public class UImageActivity extends AppCompatActivity {
             try {
 
                 bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
+                String az= ""+bitmap.getByteCount();
+                Log.e("sd",az);
+                if((bitmap.getByteCount()/1024)>5){
+                    Toast.makeText(this,"Image size must be less than 512 kb",Toast.LENGTH_LONG);
+                    super.onActivityResult(RC, RQC, I);
+                }
+                /*
+                    int width = bitmap.getWidth();
+                    int height = bitmap.getHeight();
+                    float scaleWidth = ((float) width/2;
+                    float scaleHeight = ((float) height/2;
+                    // CREATE A MATRIX FOR THE MANIPULATION
+                    Matrix matrix = new Matrix();
+                    // RESIZE THE BIT MAP
+                    matrix.postScale(scaleWidth, scaleHeight);
+
+                    // "RECREATE" THE NEW BITMAP
+                    bitmap=Bitmap.createBitmap(
+                            bitmap, 0, 0, width, height, matrix, false);
+                */
 
                 imageView.setImageBitmap(bitmap);
 
@@ -120,14 +143,15 @@ public class UImageActivity extends AppCompatActivity {
 
                 e.printStackTrace();
             }
+
         }
     }
 
     public void ImageUploadToServerFunction(){
 
         ByteArrayOutputStream byteArrayOutputStreamObject = new ByteArrayOutputStream();//output stream in which the data is written
-
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStreamObject);
+        try {
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStreamObject);
 
         byte[] byteArrayVar = byteArrayOutputStreamObject.toByteArray(); //image loaded unto output stream
 
@@ -145,7 +169,7 @@ public class UImageActivity extends AppCompatActivity {
 
                 super.onPostExecute(string1);                                                                    // Dismiss the progress dialog after done uploading.
                 progressDialog.dismiss();                                                                     // Printing uploading success message coming from server on android app.
-             //   Toast.makeText(UImageActivity.this,string1,Toast.LENGTH_LONG).show();                // Setting image as transparent after done uploading.
+                Toast.makeText(UImageActivity.this,string1,Toast.LENGTH_LONG).show();                // Setting image as transparent after done uploading.
                 imageView.setImageResource(android.R.color.transparent);
                 if(string1.contentEquals("Registration successfull"))
                 {
@@ -172,6 +196,11 @@ public class UImageActivity extends AppCompatActivity {
         }
         AsyncTaskUploadClass AsyncTaskUploadClassOBJ = new AsyncTaskUploadClass();
         AsyncTaskUploadClassOBJ.execute();
+        }
+        catch (Exception e){
+            Toast.makeText(getApplicationContext(),"You have not uploaded any image",Toast.LENGTH_SHORT);
+            //e.printStackTrace();
+        }
     }
 
     public class ImageProcessClass{

@@ -368,6 +368,9 @@ public class Habba extends AppCompatActivity{
         if( editTextUsn.getText().toString().trim().equals(""))
             editTextUsn.setError( "Usn is required!" );
         interest="";
+        if( editTextSkills.getText().toString().trim().equals(""))
+            editTextSkills.setError( "Skill is required!" );
+        skills="";                                                      //might throw error
         if(c1.isChecked()&&(!interest.contains(c1.getText().toString()))) interest = interest + c1.getText().toString() + ",";
         if(c2.isChecked()&&(!interest.contains(c2.getText().toString()))) interest = interest + c2.getText().toString() + ",";
         if(c3.isChecked()&&(!interest.contains(c3.getText().toString()))) interest = interest + c3.getText().toString() + ",";

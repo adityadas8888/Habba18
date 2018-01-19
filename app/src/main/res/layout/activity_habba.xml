@@ -172,60 +172,6 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/yearspinner"/> -->
 
-                    <TextView
-                        android:id="@+id/textView3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/Exp"/>
-
-                    <RadioGroup
-                        android:id="@+id/rgexp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:weightSum="1.0">
-                        <!--<LinearLayout-->
-                            <!--android:orientation="horizontal"-->
-                            <!--android:layout_width="match_parent"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--android:weightSum="1.0">-->
-
-                        <RadioButton
-                            android:id="@+id/rbe1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.2"
-                            android:checked="true"
-                            android:text="0" />
-                            <RadioButton
-                                android:id="@+id/rbe2"
-                                android:text="1"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="0.2"/>
-                            <RadioButton
-                                android:id="@+id/rbe3"
-                                android:text="2"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="0.2"/>
-                            <RadioButton
-                                android:id="@+id/rbe4"
-                                android:text="3"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="0.2"/>
-                            <RadioButton
-                                android:id="@+id/rbe5"
-                                android:text="4"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="0.2"/>
-
-                        <!--</LinearLayout>-->
-
-                    </RadioGroup>
-
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -299,6 +245,64 @@
                             android:singleLine="true"
                             />
                     </android.support.design.widget.TextInputLayout>
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Exp" />
+
+                    <RadioGroup
+                        android:id="@+id/rgexp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="1.0">
+                        <!--<LinearLayout-->
+                        <!--android:orientation="horizontal"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:weightSum="1.0">-->
+
+                        <RadioButton
+                            android:id="@+id/rbe1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.2"
+                            android:checked="true"
+                            android:text="0" />
+
+                        <RadioButton
+                            android:id="@+id/rbe2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.2"
+                            android:text="1" />
+
+                        <RadioButton
+                            android:id="@+id/rbe3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.2"
+                            android:text="2" />
+
+                        <RadioButton
+                            android:id="@+id/rbe4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.2"
+                            android:text="3" />
+
+                        <RadioButton
+                            android:id="@+id/rbe5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.2"
+                            android:text="4" />
+
+
+                    </RadioGroup>
+
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -309,7 +313,7 @@
                             android:id="@+id/Skills"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Current Skills(Optional)"/>
+                            android:hint="Current Skills"/>
                     </android.support.design.widget.TextInputLayout>
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
