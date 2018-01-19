@@ -45,11 +45,15 @@
                         android:textSize="20dp"
                         android:textAlignment="center"/>
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="15dp"
+                        android:text="@string/enter_your_name" />
                     <EditText
                             android:id="@+id/Name"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
                             android:inputType="none"
                             android:textColor="@drawable/edittextdrawable"
 
@@ -68,6 +72,10 @@
                         android:textColor= "@drawable/edittextdrawable"
                         />
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/enter_usn" />
 
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
@@ -79,7 +87,6 @@
                             android:id="@+id/Usn"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
                             android:drawableTint="#FF4081"
                             android:hint="@string/Usn"
                             android:inputType="text"

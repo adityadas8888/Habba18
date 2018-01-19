@@ -20,6 +20,6 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="enter_usn">Enter USN</string>
+    <string name="enter_usn">Enter your USN</string>
     <string name="enter_your_date_of_birth">Enter your Date of Birth(DD-MM-YYYY)</string>
 </resources>

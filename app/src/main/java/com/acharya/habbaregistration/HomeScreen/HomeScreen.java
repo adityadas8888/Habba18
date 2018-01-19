@@ -35,7 +35,6 @@ public class HomeScreen extends AppCompatActivity {
             email = bundle.getString("email");
             name = bundle.getString("name");
           }
-
         tstb_1.setOnToggleChanged(new TriStateToggleButton.OnToggleChanged() {
             @Override
             public void onToggle(TriStateToggleButton.ToggleStatus toggleStatus, boolean booleanToggleStatus, int toggleIntValue) {
@@ -49,7 +48,7 @@ public class HomeScreen extends AppCompatActivity {
                                 intent.putExtra("email",email);
                                 intent.putExtra("name",name);
                                 startActivity(intent);
-                            }
+                                                }
                         }, 300);
                         break;
                     case mid:break;

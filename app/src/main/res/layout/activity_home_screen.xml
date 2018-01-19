@@ -52,7 +52,6 @@
     android:layout_height="match_parent"
     android:id="@+id/tstb1_text"
     android:gravity="center_vertical"/>
-
     </RelativeLayout>
 
 </LinearLayout>

@@ -574,7 +574,7 @@ public class Apl extends AppCompatActivity {
                 super.onPostExecute(s);
                 loading.dismiss();
                 Toast.makeText(getApplicationContext(),s,Toast.LENGTH_LONG).show();
-                if(s.contentEquals("Registration Succefull!"))
+                if(s.contentEquals("ok"))
                 {
                 Intent intent = new Intent(Apl.this,UImageActivity.class);
                 intent.putExtra("email",email);
