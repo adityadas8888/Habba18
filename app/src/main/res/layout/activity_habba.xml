@@ -22,7 +22,7 @@
             android:layout_below="@+id/login_title"
             android:elevation="4dp"
             android:layout_marginTop="0dp"
-            android:paddingTop="50dp"
+            android:paddingTop="30dp"
             android:paddingBottom="50dp"
             android:orientation="vertical"
             >

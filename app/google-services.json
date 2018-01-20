@@ -1,38 +1,49 @@
 {
   "project_info": {
-    "project_number": "378959478937",
-    "project_id": "habbaregistration"
+    "project_number": "113966416814",
+    "project_id": "habba-18"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:378959478937:android:5e819c45ee2a3a0c",
+        "mobilesdk_app_id": "1:113966416814:android:5e819c45ee2a3a0c",
         "android_client_info": {
           "package_name": "com.acharya.habbaregistration"
         }
       },
       "oauth_client": [
         {
-          "client_id": "378959478937-ajpr6r2560u1g647gjapp416dpf6g1p5.apps.googleusercontent.com",
+          "client_id": "113966416814-8u3c3obk2gp8iu69l4g9lgrenheicu0j.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.acharya.habbaregistration",
-            "certificate_hash": "93f7d32fdef2bb445f89a3d5ef7191e03b153700"
+            "certificate_hash": "b041b9ff770abe9418560d1cfb3aa0a5613d6fe7"
           }
         },
         {
-          "client_id": "378959478937-nas5p0ijj09tjr5fqinomr4qo9eblvus.apps.googleusercontent.com",
+          "client_id": "113966416814-os0f8tas3hor121cj4i1cn45tees7g8d.apps.googleusercontent.com",
           "client_type": 3
+        },
+        {
+          "client_id": "113966416814-g0ej8rhhbnmqrt3rpb6uebi8hbo6dt3l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.acharya.habbaregistration",
+            "certificate_hash": "707fd389563b6e8d878f184aade0866a74c8d105"
+          }
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDZMD76BmE86Hv5CaTWX8Co4TYJR7TlTMg"
+          "current_key": "AIzaSyCSugGCL8B3H9jWohKzUlm1mI1-fiJHjTM"
         }
       ],
       "services": {
         "analytics_service": {
-          "status": 1
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-112634875-1"
+          }
         },
         "appinvite_service": {
           "status": 1,

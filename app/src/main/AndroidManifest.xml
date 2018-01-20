@@ -16,7 +16,8 @@
         <activity
             android:name=".SplashScreen.SplashScreen"
             android:launchMode="singleInstance"
-            android:theme="@style/AppTheme">
+            android:theme="@style/AppTheme"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,19 +27,24 @@
         <activity
             android:name=".HomeScreen.HomeScreen"
             android:launchMode="singleInstance"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Apl.Apl"
             android:launchMode="singleInstance"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
+            android:windowSoftInputMode="stateHidden|adjustResize"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Habba"
             android:launchMode="singleInstance"
-            android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity android:name=".Login.Login" />
+            android:windowSoftInputMode="stateHidden|adjustResize"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Login.Login"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".UploadImage.UImageActivity"
-            android:launchMode="singleInstance" />
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
