@@ -1,7 +1,6 @@
 package com.acharya.habbaregistration.Login;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -84,8 +83,8 @@ public class Login extends AppCompatActivity implements
             String email = acct.getEmail();
                     if(email.matches("^[\\w.+\\-]+@acharya\\.ac\\.in$")) {
                 Intent i = new Intent(Login.this, HomeScreen.class);
-                i.putExtra("name",personName);
-                i.putExtra("email",email);
+              //  i.putExtra("name",personName);
+                //i.putExtra("email",email);
                 startActivity(i);
                 finish();
             }

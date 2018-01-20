@@ -2,28 +2,51 @@ package com.acharya.habbaregistration.HomeScreen;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.acharya.habbaregistration.Apl.Apl;
 import com.acharya.habbaregistration.Habba;
+import com.acharya.habbaregistration.Login.Login;
 import com.acharya.habbaregistration.R;
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
+
 import it.beppi.tristatetogglebutton_library.TriStateToggleButton;
 
 import static android.graphics.Color.argb;
 
 
-public class HomeScreen extends AppCompatActivity {
+public class HomeScreen extends AppCompatActivity implements View.OnClickListener,GoogleApiClient.OnConnectionFailedListener{
     String email,name;
     private static long back_pressed;
+    private Button signout;
+    private GoogleApiClient mGoogleApiClient;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
+        signout = findViewById(R.id.out);
+        signout.setOnClickListener(this);
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)   //gets identity
+                .requestEmail()
+                .build();
+
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .enableAutoManage(this, this)
+                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+                .build();
+
+
         final TriStateToggleButton tstb_1 = (TriStateToggleButton) findViewById(R.id.buttonPanel);
         tstb_1.setMidColor(argb(1,140,164,245));
         tstb_1.setOnColor(argb(1,140,164,245));
@@ -94,6 +117,29 @@ public class HomeScreen extends AppCompatActivity {
         }
 
     }
+    private void signOut() {
+        Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(new ResultCallback<Status>() {
+            @Override
+            public void onResult(@NonNull Status status) {
+                Intent i = new Intent(HomeScreen.this,Login.class);
+                Toast.makeText(getApplicationContext(),"You have been signed out",Toast.LENGTH_SHORT).show();
+                startActivity(i);
+            }
+        });
 
+    }
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.out:
+                signOut();
+                break;
+        }
+    }
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
+    }
 }
 

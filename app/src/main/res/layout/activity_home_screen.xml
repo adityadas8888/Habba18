@@ -52,6 +52,16 @@
     android:layout_height="match_parent"
     android:id="@+id/tstb1_text"
     android:gravity="center_vertical"/>
+
+        <Button
+            android:id="@+id/out"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/buttonshape3"
+            android:text="Sign Out" />
     </RelativeLayout>
 
 </LinearLayout>
