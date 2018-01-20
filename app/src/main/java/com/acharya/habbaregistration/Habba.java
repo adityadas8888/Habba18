@@ -63,7 +63,7 @@ public class Habba extends AppCompatActivity{
         if (bundle != null) {
             email = bundle.getString("email");
             name = bundle.getString("name");
-            if(name.equals(nullstring)||name.equals(" "))
+            if(name.equals(nullstring)||name.equals(""))
                 name="N/A";
         }
         url = "http://acharyahabba.in/apl/college.php";

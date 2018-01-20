@@ -6,8 +6,8 @@ android {
         applicationId "com.acharya.habbaregistration"
         minSdkVersion 15
         targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
+        versionCode 5
+        versionName "1.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -21,8 +21,10 @@ android {
         sourceCompatibility 1.8
     }
 }
+apply plugin: 'com.android.application'
 
 dependencies {
+    compile 'com.google.android.gms:play-services-auth:11.8.0'
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'com.android.support:support-v4:26.1.0'

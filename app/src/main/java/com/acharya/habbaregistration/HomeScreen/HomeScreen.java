@@ -26,6 +26,7 @@ import static android.graphics.Color.argb;
 
 
 public class HomeScreen extends AppCompatActivity implements View.OnClickListener,GoogleApiClient.OnConnectionFailedListener{
+
     String email,name;
     private static long back_pressed;
     private Button signout;
@@ -45,8 +46,6 @@ public class HomeScreen extends AppCompatActivity implements View.OnClickListene
                 .enableAutoManage(this, this)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
-
-
         final TriStateToggleButton tstb_1 = (TriStateToggleButton) findViewById(R.id.buttonPanel);
         tstb_1.setMidColor(argb(1,140,164,245));
         tstb_1.setOnColor(argb(1,140,164,245));
@@ -80,7 +79,6 @@ public class HomeScreen extends AppCompatActivity implements View.OnClickListene
                         }, 300);
                         break;
                     case mid:break;
-
                     case on:
                         final Handler handler2 = new Handler();
                         handler2.postDelayed(new Runnable() {
@@ -117,6 +115,7 @@ public class HomeScreen extends AppCompatActivity implements View.OnClickListene
         }
 
     }
+
     private void signOut() {
         Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(new ResultCallback<Status>() {
             @Override
