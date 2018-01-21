@@ -41,8 +41,8 @@
                         android:id="@+id/textView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="VOLUNTEER REGISTRATION"
-                        android:textSize="20dp"
+                        android:text="@string/Vol"
+                        android:textSize="20sp"
                         android:textColor="#8BA5FC"
                         android:textAlignment="center"/>
 
@@ -335,7 +335,7 @@
 
                     <Button
                         android:id="@+id/ButtonRegister"
-                        android:text="Register"
+                        android:text="@string/reg"
                         android:textColor="#ffffff"
                         android:layout_width="match_parent"
                         android:textSize="@dimen/_18sp"

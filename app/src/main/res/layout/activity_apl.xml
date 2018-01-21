@@ -14,131 +14,135 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingTop="25dp"
             android:paddingLeft="@dimen/activity_horizontal_margin"
             android:paddingRight="@dimen/activity_horizontal_margin"
             android:paddingBottom="30dp">
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:textColor="#8BA5FC"
-                android:text="APL REGISTRATION"
-                android:textSize="20sp"/>
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textColor="#8BA5FC"
+                    android:text="@string/APL"
+                    android:textSize="20sp"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingTop="15dp"
-                android:text="@string/enter_your_name" />
-              <android.support.design.widget.TextInputLayout
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  app:errorEnabled="true">
-                   <EditText
-                      android:id="@+id/editTextName"
-                       android:clickable="false"
-                      android:layout_width="fill_parent"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="15dp"
+                    android:text="@string/enter_your_name" />
+
+                  <android.support.design.widget.TextInputLayout
+                      android:layout_width="match_parent"
                       android:layout_height="wrap_content"
-                      android:inputType="none"
-                      android:textColor="@drawable/edittextdrawable"/>
-              </android.support.design.widget.TextInputLayout>
+                      app:errorEnabled="true">
+
+                    <EditText
+                          android:id="@+id/editTextName"
+                          android:clickable="false"
+                          android:layout_width="fill_parent"
+                          android:layout_height="wrap_content"
+                          android:inputType="none"
+                          android:textColor="@drawable/edittextdrawable"/>
+
+                  </android.support.design.widget.TextInputLayout>
 
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/enter_your_email" />
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:errorEnabled="true">
-                <EditText
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textEmailAddress"
-                    android:id="@+id/editTextEmail"
-                    android:clickable="false"
-                    android:textColor= "@drawable/edittextdrawable"/>
-            </android.support.design.widget.TextInputLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/gender" />
-
-
-            <RadioGroup
-                android:id="@+id/gender"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:weightSum="1.0"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/male"
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:checked="true"
-                    android:text="Male" />
-                <RadioButton
-                    android:id="@+id/female"
-                    android:text="Female"
+                    android:text="@string/enter_your_email" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:errorEnabled="true">
+                    <EditText
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textEmailAddress"
+                        android:id="@+id/editTextEmail"
+                        android:clickable="false"
+                        android:textColor= "@drawable/edittextdrawable"/>
+                </android.support.design.widget.TextInputLayout>
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.5"/>
-            </RadioGroup>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                >
-                <EditText
-                    android:id="@+id/editTextDob"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/enter_your_date_of_birth"
-                    android:inputType="date"
-                    />
-            </android.support.design.widget.TextInputLayout>
+                    android:text="@string/gender" />
 
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/enter_your_designation" />
-            <RadioGroup
-                android:id="@+id/designation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:weightSum="1.2"
-                android:orientation="horizontal">
-                <RadioButton
-                    android:id="@+id/student"
-                    android:text="Student"
+                <RadioGroup
+                    android:id="@+id/gender"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.4"/>
+                    android:weightSum="1.0"
+                    android:orientation="horizontal">
 
-                <RadioButton
-                    android:id="@+id/faculty"
+                    <RadioButton
+                        android:id="@+id/male"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:checked="true"
+                        android:text="@string/Male" />
+                    <RadioButton
+                        android:id="@+id/female"
+                        android:text="@string/Female"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"/>
+
+                </RadioGroup>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:id="@+id/editTextDob"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/enter_your_date_of_birth"
+                        android:inputType="date"
+                        />
+                </android.support.design.widget.TextInputLayout>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/enter_your_designation" />
+                <RadioGroup
+                    android:id="@+id/designation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.4"
-                    android:checked="true"
-                    android:text="Faculty" />
-                <RadioButton
-                    android:id="@+id/other"
-                    android:text="Others"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.4"/>
-            </RadioGroup>
+                    android:weightSum="1.2"
+                    android:orientation="horizontal">
+                    <RadioButton
+                        android:id="@+id/student"
+                        android:text="@string/Student"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.4"/>
+
+                    <RadioButton
+                        android:id="@+id/faculty"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.4"
+                        android:checked="true"
+                        android:text="@string/Faculty" />
+                    <RadioButton
+                        android:id="@+id/other"
+                        android:text="@string/Others"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.4"/>
+                </RadioGroup>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -156,7 +160,7 @@
             </android.support.design.widget.TextInputLayout>
 
             <TextView
-                android:text="Select College"
+                android:text="@string/College"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/textView2" />
@@ -170,7 +174,7 @@
             <!--android:entries="@array/spinnerRoot" />-->
 
             <TextView
-                android:text="Select Department"
+                android:text="@string/Select_Department"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/textView3" />
@@ -197,7 +201,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Enter your Category" />
+                android:text="@string/Category" />
             <RadioGroup
                 android:id="@+id/category"
                 android:layout_width="match_parent"
@@ -212,16 +216,16 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.4"
                     android:checked="true"
-                    android:text="Batsman" />
+                    android:text="@string/Batsman" />
                 <RadioButton
                     android:id="@+id/Bowler"
-                    android:text="Bowler"
+                    android:text="@string/Bowler"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.4"/>
                 <RadioButton
                     android:id="@+id/All-Rounder"
-                    android:text="All-Rounder"
+                    android:text="@string/All"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.4"/>
@@ -230,7 +234,7 @@
             <Button
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="Register"
+                android:text="@string/reg"
                 android:background="@drawable/buttonshape"
                 android:id="@+id/buttonRegister"
                 android:textColor="#FFFFFF"/>
