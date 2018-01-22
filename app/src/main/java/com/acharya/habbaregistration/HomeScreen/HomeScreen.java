@@ -1,5 +1,6 @@
 package com.acharya.habbaregistration.HomeScreen;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -10,6 +11,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.acharya.habbaregistration.Apl.Apl;
+import com.acharya.habbaregistration.Apl.HttpHandler;
 import com.acharya.habbaregistration.Habba;
 import com.acharya.habbaregistration.Login.Login;
 import com.acharya.habbaregistration.R;
@@ -31,11 +33,13 @@ public class HomeScreen extends AppCompatActivity implements View.OnClickListene
     private static long back_pressed;
     private Button signout;
     private GoogleApiClient mGoogleApiClient;
-
+    private String result1 = null;
+    final String checkurl = "http://www.acharyahabba.in/apl/checks.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
+        new GetContacts().execute();
         signout = findViewById(R.id.out);
         signout.setOnClickListener(this);
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)   //gets identity
@@ -67,16 +71,20 @@ public class HomeScreen extends AppCompatActivity implements View.OnClickListene
             public void onToggle(TriStateToggleButton.ToggleStatus toggleStatus, boolean booleanToggleStatus, int toggleIntValue) {
                 switch (toggleStatus) {
                     case off:
-                        final Handler handler = new Handler();
-                        handler.postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                Intent intent = new Intent(HomeScreen.this, Apl.class);
-                                intent.putExtra("email",email);
-                                intent.putExtra("name",name);
-                                startActivity(intent);
-                                                }
-                        }, 300);
+                        if(result1.contains("0"))
+                            Toast.makeText(getApplicationContext(),"APL registrations are not open",Toast.LENGTH_LONG).show();
+                        else {
+                            final Handler handler = new Handler();
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Intent intent = new Intent(HomeScreen.this, Apl.class);
+                                    intent.putExtra("email", email);
+                                    intent.putExtra("name", name);
+                                    startActivity(intent);
+                                }
+                            }, 300);
+                        }
                         break;
                     case mid:break;
                     case on:
@@ -96,6 +104,7 @@ public class HomeScreen extends AppCompatActivity implements View.OnClickListene
 
             }
         });
+
 
     }
     @Override
@@ -138,6 +147,31 @@ public class HomeScreen extends AppCompatActivity implements View.OnClickListene
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
+    }
+    private class GetContacts extends AsyncTask<Void, Void, String> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+        }
+
+        @Override
+        protected String doInBackground(Void... arg) {
+
+            HttpHandler sh = new HttpHandler();
+            String allowed = sh.makeServiceCall(checkurl);
+            return allowed;
+        }
+
+        @Override
+        protected void onPostExecute(final String result) {
+            super.onPostExecute(result);
+            result1=result;
+            System.out.println(result);
+        }
+
 
     }
 }

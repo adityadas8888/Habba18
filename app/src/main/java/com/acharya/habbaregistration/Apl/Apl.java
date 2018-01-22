@@ -132,20 +132,20 @@ public class Apl extends AppCompatActivity {
             rootLayout.setVisibility(View.VISIBLE);
         }
 
-        t1 = (TextView)findViewById(R.id.textView2);
-        t2 = (TextView)findViewById(R.id.textView3);
-        editTextName = (EditText) findViewById(R.id.editTextName);
-        editTextPhone = (EditText) findViewById(R.id.editPhone);
-        editTextUsn = (EditText) findViewById(R.id.editTextUsn);
-        textinputusn = (TextInputLayout) findViewById(R.id.text_input_usn);
-        s1 = (Spinner) findViewById(R.id.spinner);                          //College
-        s2 = (Spinner) findViewById(R.id.spinner2);                         //Branch
-        editTextEmail = (EditText) findViewById(R.id.editTextEmail);
-        editTextDob = (EditText)findViewById(R.id.editTextDob);
-        radioGroupGender = (RadioGroup)findViewById(R.id.gender);
-        radioGroupDesignation = (RadioGroup)findViewById(R.id.designation);
-        radioGroupCategory = (RadioGroup)findViewById(R.id.category);
-        buttonRegister = (Button) findViewById(R.id.buttonRegister);
+        t1 = findViewById(R.id.textView2);
+        t2 = findViewById(R.id.textView3);
+        editTextName = findViewById(R.id.editTextName);
+        editTextPhone = findViewById(R.id.editPhone);
+        editTextUsn = findViewById(R.id.editTextUsn);
+        textinputusn = findViewById(R.id.text_input_usn);
+        s1 = findViewById(R.id.spinner);                          //College
+        s2 = findViewById(R.id.spinner2);                         //Branch
+        editTextEmail = findViewById(R.id.editTextEmail);
+        editTextDob = findViewById(R.id.editTextDob);
+        radioGroupGender =findViewById(R.id.gender);
+        radioGroupDesignation = findViewById(R.id.designation);
+        radioGroupCategory = findViewById(R.id.category);
+        buttonRegister = findViewById(R.id.buttonRegister);
          Intent mIntent = getIntent();
         Bundle bundle = mIntent.getExtras();
         if (bundle != null) {
@@ -210,11 +210,11 @@ public class Apl extends AppCompatActivity {
         t2.setVisibility(View.GONE);
         textinputusn.setVisibility(View.GONE);
         editTextUsn.setVisibility(View.GONE);
-        radioButtonGender = (RadioButton) findViewById(radioGroupGender.getCheckedRadioButtonId());
+        radioButtonGender =  findViewById(radioGroupGender.getCheckedRadioButtonId());
         gender = radioButtonGender.getText().toString();
-        radioButtonDesignation = (RadioButton) findViewById(radioGroupDesignation.getCheckedRadioButtonId());
+        radioButtonDesignation = findViewById(radioGroupDesignation.getCheckedRadioButtonId());
         designation = radioButtonDesignation.getText().toString();
-        radioButtonCategory = (RadioButton) findViewById(radioGroupCategory.getCheckedRadioButtonId());
+        radioButtonCategory = findViewById(radioGroupCategory.getCheckedRadioButtonId());
         category = radioButtonCategory.getText().toString();
 
         editTextDob.setOnClickListener(new View.OnClickListener() {
@@ -234,7 +234,7 @@ public class Apl extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 int selectedId = radioGroupGender.getCheckedRadioButtonId();
                 // find the radiobutton by returned id
-                radioButtonGender = (RadioButton) findViewById(selectedId);
+                radioButtonGender =  findViewById(selectedId);
                 gender = radioButtonGender.getText().toString();
                 if(gender.equals(""))
                     gender="N/A";
@@ -248,7 +248,7 @@ public class Apl extends AppCompatActivity {
                 int selectedId = radioGroupDesignation.getCheckedRadioButtonId();
 
                 // find the radiobutton by returned id
-                radioButtonDesignation = (RadioButton) findViewById(selectedId);
+                radioButtonDesignation = findViewById(selectedId);
                 designation = radioButtonDesignation.getText().toString();
                 if(designation.equals("Student")){
                     s1.setVisibility(View.VISIBLE);
@@ -294,7 +294,7 @@ public class Apl extends AppCompatActivity {
                 int selectedId = radioGroupCategory.getCheckedRadioButtonId();
 
                 // find the radiobutton by returned id
-                radioButtonCategory = (RadioButton) findViewById(selectedId);
+                radioButtonCategory = findViewById(selectedId);
                 category = radioButtonCategory.getText().toString();
             }
 
@@ -535,8 +535,8 @@ public class Apl extends AppCompatActivity {
         dob = editTextDob.getText().toString();
 
         number = editTextPhone.getText().toString().trim().toLowerCase();
-        if( editTextPhone.getText().toString().trim().equals("")) {
-            editTextPhone.setError( "Phone number is required!" );
+        if( editTextPhone.getText().toString().trim().equals("")||editTextPhone.length()!=10) {
+            editTextPhone.setError( "A 10 digit phone number is required!" );
 
             if(number.isEmpty())
                 number="";

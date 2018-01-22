@@ -17,7 +17,19 @@
     <string name="Exp">Past Experience(1 to 5)</string>
     <string name="Branch">Select Branch</string>
     <string name="Year">Select Year</string>
-
+    <string name="APL">APL REGISTRATION</string>
+    <string name="Male">Male</string>
+    <string name="Female">Female</string>
+    <string name="Student">Student</string>
+    <string name="Faculty">Faculty</string>
+    <string name="Others">Others</string>
+    <string name="Select_Department">Select Department</string>
+    <string name="Category">Enter your Category</string>
+    <string name="Batsman">Batsman</string>
+    <string name="Bowler">Bowler</string>
+    <string name="All">All-Rounder</string>
+    <string name="reg">Register</string>
+    <string name="Vol">VOLUNTEER REGISTRATION</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="enter_usn">Enter your USN</string>

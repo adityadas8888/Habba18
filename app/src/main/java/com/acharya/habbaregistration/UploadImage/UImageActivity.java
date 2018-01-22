@@ -122,20 +122,6 @@ public class UImageActivity extends AppCompatActivity {
                     Toast.makeText(this,"Image size must be less than 512 kb",Toast.LENGTH_LONG);
                     super.onActivityResult(RC, RQC, I);
                 }
-                /*
-                    int width = bitmap.getWidth();
-                    int height = bitmap.getHeight();
-                    float scaleWidth = ((float) width/2;
-                    float scaleHeight = ((float) height/2;
-                    // CREATE A MATRIX FOR THE MANIPULATION
-                    Matrix matrix = new Matrix();
-                    // RESIZE THE BIT MAP
-                    matrix.postScale(scaleWidth, scaleHeight);
-
-                    // "RECREATE" THE NEW BITMAP
-                    bitmap=Bitmap.createBitmap(
-                            bitmap, 0, 0, width, height, matrix, false);
-                */
 
                 imageView.setImageBitmap(bitmap);
 

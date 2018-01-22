@@ -47,7 +47,6 @@ public class Habba extends AppCompatActivity{
     String idzz2;
     String email,name,clg,dept,year,exp,skills;
     Spinner s1, s2;
-                                                                                                     // Spinner yearspin;
     RadioGroup rgyear,rgexp;
     RadioButton rbyear,rbexp;
     private Button buttonRegister;
@@ -80,33 +79,33 @@ public class Habba extends AppCompatActivity{
     }
 
     public void initfilelds() {
-        editTextName = (EditText)findViewById(R.id.Name);
+        editTextName = findViewById(R.id.Name);
         editTextPhone = (TextInputEditText)findViewById(R.id.Phone);
         editTextDescribe = (TextInputEditText)findViewById(R.id.Describe);
-        editTextEmail = (EditText) findViewById(R.id.editTextEmail);
+        editTextEmail = findViewById(R.id.editTextEmail);
         editTextUsn = (TextInputEditText)findViewById(R.id.Usn);
         editTextSuggestion = (TextInputEditText)findViewById(R.id.Suggestion);
         editTextSkills = (TextInputEditText)findViewById(R.id.Skills);
         s1 = findViewById(R.id.spinner1);
         s2 = findViewById(R.id.spinner2);
-        rgyear = (RadioGroup)findViewById(R.id.rgyear);
-        rgexp = (RadioGroup)findViewById(R.id.rgexp);
-        buttonRegister = (Button) findViewById(R.id.ButtonRegister);
+        rgyear = findViewById(R.id.rgyear);
+        rgexp = findViewById(R.id.rgexp);
+        buttonRegister =  findViewById(R.id.ButtonRegister);
         editTextName.setText(name, TextView.BufferType.EDITABLE);
         editTextName.setEnabled(false);
         editTextEmail.setText(email,TextView.BufferType.EDITABLE);
         editTextEmail.setEnabled(false);
-        rbyear = (RadioButton) findViewById(rgyear.getCheckedRadioButtonId());
+        rbyear =  findViewById(rgyear.getCheckedRadioButtonId());
         year = rbyear.getText().toString();
-        rbexp = (RadioButton) findViewById(rgexp.getCheckedRadioButtonId());
+        rbexp =  findViewById(rgexp.getCheckedRadioButtonId());
         exp = rbexp.getText().toString();                       //  yearspin = findViewById(R.id.yearspinner);
-        c1 = (CheckBox)findViewById(R.id.one);
-        c2 = (CheckBox)findViewById(R.id.two);
-        c3 = (CheckBox)findViewById(R.id.three);
-        c4 = (CheckBox)findViewById(R.id.four);
-        c5 = (CheckBox)findViewById(R.id.five);
-        c6 = (CheckBox)findViewById(R.id.six);
-        c7 = (CheckBox)findViewById(R.id.seven);
+        c1 = findViewById(R.id.one);
+        c2 = findViewById(R.id.two);
+        c3 = findViewById(R.id.three);
+        c4 = findViewById(R.id.four);
+        c5 = findViewById(R.id.five);
+        c6 = findViewById(R.id.six);
+        c7 = findViewById(R.id.seven);
          rgyear.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -126,7 +125,7 @@ public class Habba extends AppCompatActivity{
                 int selectedId = rgexp.getCheckedRadioButtonId();
 
                 // find the radiobutton by returned id
-                rbexp = (RadioButton) findViewById(selectedId);
+                rbexp =  findViewById(selectedId);
                 exp = rbexp.getText().toString();
             }
 
@@ -357,14 +356,15 @@ public class Habba extends AppCompatActivity{
         if( editTextName.getText().toString().trim().equals(""))
             editTextName.setError( "Name is required!" );
 
-        if( editTextPhone.getText().toString().trim().equals(""))
-            editTextPhone.setError( "Phone number is required!" );
+        if( editTextPhone.getText().toString().trim().equals("")||editTextPhone.length()!=10)
+            editTextPhone.setError( "A 10 digit phone number is required!" );
 
         if( editTextDescribe.getText().toString().trim().equals("")) {
             editTextDescribe.setError("Description is required!");
             }
-        if( editTextSuggestion.getText().toString().trim().equals(""))
-            editTextSuggestion.setError( "Suggestion is required!" );
+           if( editTextSuggestion.getText().toString().trim().equals(""))
+
+               //     editTextSuggestion.setError( "Suggestion is required!" );
         if( editTextUsn.getText().toString().trim().equals(""))
             editTextUsn.setError( "Usn is required!" );
         interest="";
@@ -379,11 +379,13 @@ public class Habba extends AppCompatActivity{
         if(c6.isChecked()&&(!interest.contains(c6.getText().toString()))) interest = interest + c6.getText().toString() + ",";
         if(c7.isChecked()&&(!interest.contains(c7.getText().toString()))) interest = interest + c7.getText().toString() + ",";
 
-        Log.e(TAG,interest);
+    //    Log.e(TAG,interest);
         String usn = editTextUsn.getText().toString().trim().toLowerCase();
         String describe = editTextDescribe.getText().toString().trim().toLowerCase();
         String phone = editTextPhone.getText().toString().trim();
         String suggestion = editTextSuggestion.getText().toString().trim().toLowerCase();
+        if(suggestion.isEmpty())
+            suggestion="N/A";
         Log.e(TAG,year+exp);
         skills=editTextSkills.getText().toString().trim().toLowerCase();
         if(usn.isEmpty()||describe.isEmpty()||phone.isEmpty()||year.isEmpty()||exp.isEmpty()||skills.isEmpty()||suggestion.isEmpty())
